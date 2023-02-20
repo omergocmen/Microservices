@@ -6,7 +6,7 @@ namespace Catalog.API.Entities
     {
         [BsonId]
         [BsonRepresentation(MongoDB.Bson.BsonType.ObjectId)]
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         public string Name { get; set; }
         public string Description { get; set; }
@@ -23,7 +23,6 @@ namespace Catalog.API.Entities
 
         public Feature Feature { get; set; }
 
-        [BsonId]
         [BsonRepresentation(MongoDB.Bson.BsonType.ObjectId)]
         public string CategoryId { get; set; }
 
