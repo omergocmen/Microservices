@@ -2,7 +2,7 @@
 using Catalog.API.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Shared.BaseController;
+using Shared.ControllerBases;
 
 namespace Catalog.API.Controllers
 {

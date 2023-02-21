@@ -1,2 +1,6 @@
 Services
 	Catalog.API Port = 5011
+	PhotoStock.API Port = 5012
+	Basket.API Port = 5013
+IdentityService
+	Identity Port = 5001
