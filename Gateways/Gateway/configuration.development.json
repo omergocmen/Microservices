@@ -52,7 +52,7 @@
       }
     },
     {
-      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamPathTemplate": "/api/discounts/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {

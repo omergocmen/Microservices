@@ -15,6 +15,7 @@ namespace IdentityServer
             new ApiResource("resource_discount"){Scopes={ "discount_fullpermission" } },
             new ApiResource("resource_order"){Scopes={ "order_fullpermission" } },
             new ApiResource("resource_payment"){Scopes={ "payment_fullpermission" } },
+            new ApiResource("resource_gateway"){Scopes={ "gateway_fullpermission" } },
             new ApiResource(IdentityServerConstants.LocalApi.ScopeName)
         };
         public static IEnumerable<IdentityResource> IdentityResources =>
@@ -35,6 +36,7 @@ namespace IdentityServer
                 new ApiScope("discount_fullpermission","Discount Api için full erişim"),
                 new ApiScope("order_fullpermission","Order Api için full erişim"),
                 new ApiScope("payment_fullpermission","Payment Api için full erişim"),
+                new ApiScope("gateway_fullpermission","Gateway Api için full erişim"),
                 new ApiScope(IdentityServerConstants.LocalApi.ScopeName),
             };
 
@@ -47,7 +49,7 @@ namespace IdentityServer
                     ClientName="ASP.Net Core Mvc",
                     ClientSecrets={new Secret ("secret".Sha256())},
                     AllowedGrantTypes=GrantTypes.ClientCredentials,
-                    AllowedScopes={ "catalog_fullpermission", "photo_stock_fullpermission", IdentityServerConstants.LocalApi.ScopeName }
+                    AllowedScopes={ "catalog_fullpermission", "photo_stock_fullpermission", "gateway_fullpermission", IdentityServerConstants.LocalApi.ScopeName }
                 },
                 new Client
                 {
@@ -56,7 +58,8 @@ namespace IdentityServer
                     AllowOfflineAccess=true,
                     ClientSecrets={new Secret ("secret".Sha256())},
                     AllowedGrantTypes=GrantTypes.ResourceOwnerPassword,
-                    AllowedScopes={"basket_fullpermission","discount_fullpermission","payment_fullpermission","order_fullpermission",IdentityServerConstants.StandardScopes.Email, IdentityServerConstants.StandardScopes.OfflineAccess,
+                    AllowedScopes={"basket_fullpermission","discount_fullpermission"
+                        ,"payment_fullpermission","order_fullpermission","gateway_fullpermission",IdentityServerConstants.StandardScopes.Email, IdentityServerConstants.StandardScopes.OfflineAccess,
                     IdentityServerConstants.StandardScopes.OpenId,IdentityServerConstants.StandardScopes.Profile,
                     IdentityServerConstants.LocalApi.ScopeName,"roles"},
                     AccessTokenLifetime=2*60*60,

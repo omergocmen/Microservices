@@ -3,18 +3,23 @@ using Ocelot.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Host.ConfigureAppConfiguration((hostingContext, config) =>
+IConfiguration configuration = new ConfigurationBuilder()
+                            .AddJsonFile($"configuration.{builder.Environment.EnvironmentName}.json", true, true)
+                            .Build();
+
+builder.Services.AddOcelot(configuration);
+
+builder.Services.AddAuthentication().AddJwtBearer("GatewayAuthenticationScheme", options =>
 {
-    var item = hostingContext.HostingEnvironment.EnvironmentName;
-    config.SetBasePath(hostingContext.HostingEnvironment.ContentRootPath)
-    .AddJsonFile("appsettings.json", true, true)
-    .AddJsonFile($"appsettings.{hostingContext.HostingEnvironment.EnvironmentName}.json", true, true)
-    .AddJsonFile($"configuration.{hostingContext.HostingEnvironment.EnvironmentName}.json")
-    .AddEnvironmentVariables();
+    options.Authority = builder.Configuration["IdentityServerURL"];
+    options.Audience = "resource_gateway";
+    options.RequireHttpsMetadata = false;
 });
 
+builder.Logging.AddConsole();
 
-builder.Services.AddOcelot();
 var app = builder.Build();
-app.UseOcelot();
+
+app.UseHttpsRedirection();
+app.UseOcelot().Wait();
 app.Run();

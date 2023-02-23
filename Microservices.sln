@@ -36,23 +36,23 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Discount.API", "Services\Di
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Order", "Order", "{3A6AE352-3E5C-4767-8281-747015D45BBE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Order.API", "Services\Order\Order.API\Order.API.csproj", "{5072E0B5-16BA-4F24-8F6E-964A683DED1B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Order.API", "Services\Order\Order.API\Order.API.csproj", "{5072E0B5-16BA-4F24-8F6E-964A683DED1B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Order.Application", "Services\Order\Order.Application\Order.Application.csproj", "{069216C8-24EA-4BAF-860D-155B12A549B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Order.Application", "Services\Order\Order.Application\Order.Application.csproj", "{069216C8-24EA-4BAF-860D-155B12A549B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Order.Domain", "Services\Order\Order.Domain\Order.Domain.csproj", "{21AE2375-A00F-422D-8DDC-69518B877C39}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Order.Domain", "Services\Order\Order.Domain\Order.Domain.csproj", "{21AE2375-A00F-422D-8DDC-69518B877C39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Order.Infrastructure", "Services\Order\Order.Infrastructure\Order.Infrastructure.csproj", "{DFC31B41-20D1-435A-BCCC-9B235682652C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Order.Infrastructure", "Services\Order\Order.Infrastructure\Order.Infrastructure.csproj", "{DFC31B41-20D1-435A-BCCC-9B235682652C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Order.Core", "Services\Order\Order.Core\Order.Core.csproj", "{7AAFBE9B-A651-44BE-9F78-DDD86A8DCB74}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Order.Core", "Services\Order\Order.Core\Order.Core.csproj", "{7AAFBE9B-A651-44BE-9F78-DDD86A8DCB74}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FakePayment", "FakePayment", "{1C06B4E3-97C0-4BF6-9E39-EDC7E1D38294}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakePayment.API", "Services\FakePayment\FakePayment.API\FakePayment.API.csproj", "{75003D17-CE0E-43EB-A986-88BA6F864DE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FakePayment.API", "Services\FakePayment\FakePayment.API\FakePayment.API.csproj", "{75003D17-CE0E-43EB-A986-88BA6F864DE5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateways", "Gateways", "{0480871C-F3DB-42C1-BBEF-18DD13DFCB1E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gateway", "Gateways\Gateway\Gateway.csproj", "{1517F7E8-FE1F-4853-AC0B-14B4287BD78F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gateway", "Gateways\Gateway\Gateway.csproj", "{1517F7E8-FE1F-4853-AC0B-14B4287BD78F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

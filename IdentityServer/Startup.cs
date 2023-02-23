@@ -31,7 +31,7 @@ namespace IdentityServer
         {
             services.AddLocalApiAuthentication();
             services.AddControllersWithViews();
-
+            services.AddCors();
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
@@ -81,6 +81,9 @@ namespace IdentityServer
             }
 
             app.UseStaticFiles();
+
+            var allowedHosts = Configuration.GetValue<string>("AllowedHosts");
+            app.UseCors(builder => builder.WithOrigins(allowedHosts).AllowAnyHeader());
 
             app.UseRouting();
             app.UseIdentityServer();
