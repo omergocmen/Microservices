@@ -1,5 +1,6 @@
 using Catalog.API.Services;
 using Catalog.API.Settings;
+using MassTransit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc.Authorization;
@@ -9,8 +10,20 @@ using System.Reflection;
 var builder = WebApplication.CreateBuilder(args);
 
 
-// Add services to the container.
+builder.Services.AddMassTransit(options =>
+{
+    options.UsingRabbitMq((context, cfg) =>
+    {
+        cfg.Host(builder.Configuration["RabbitMQUrl"], "/", host =>
+        {
+            host.Username("guest");
+            host.Password("guest");
+        });
+    });
+});
+builder.Services.AddMassTransitHostedService();
 
+// Add services to the container.
 builder.Services.AddControllers(options =>
 {
     options.Filters.Add(new AuthorizeFilter());

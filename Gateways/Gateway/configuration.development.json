@@ -86,7 +86,7 @@
       }
     },
     {
-      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamPathTemplate": "/api/fakePayments/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {

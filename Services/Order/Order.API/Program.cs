@@ -1,8 +1,10 @@
+using MassTransit;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
+using Order.Application.Consumers;
 using Order.Infrastructure;
 using Shared.Services;
 using System.IdentityModel.Tokens.Jwt;
@@ -23,6 +25,32 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
     options.RequireHttpsMetadata = false;
 });
 
+builder.Services.AddMassTransit(options =>
+{
+    options.AddConsumer<CreateOrderMessageCommandConsumer>();
+    options.AddConsumer<CourseNameChangedEventConsumer>();
+    // Default Port : 5672
+    options.UsingRabbitMq((context, cfg) =>
+    {
+        cfg.Host(builder.Configuration["RabbitMQUrl"], "/", host =>
+        {
+            host.Username("guest");
+            host.Password("guest");
+        });
+
+        cfg.ReceiveEndpoint("create-order-service", e =>
+        {
+            e.ConfigureConsumer<CreateOrderMessageCommandConsumer>(context);
+        });
+        cfg.ReceiveEndpoint("course-name-changed-event-order-service", e =>
+        {
+            e.ConfigureConsumer<CourseNameChangedEventConsumer>(context);
+        });
+    });
+});
+
+
+builder.Services.AddMassTransitHostedService();
 
 builder.Services.AddControllers(options =>
 {

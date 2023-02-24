@@ -2,9 +2,11 @@
 using Catalog.API.Dtos;
 using Catalog.API.Entities;
 using Catalog.API.Settings;
+using MassTransit;
 using Microsoft.AspNetCore.Cors.Infrastructure;
 using MongoDB.Driver;
 using Shared.Dtos;
+using Shared.Messages;
 
 namespace Catalog.API.Services
 {
@@ -13,10 +15,12 @@ namespace Catalog.API.Services
         private readonly IMongoCollection<Course> _courseCollection;
         private readonly IMongoCollection<Category> _categoryCollection;
         private readonly IMapper _mapper;
+        private readonly IPublishEndpoint _publishEndpoint;
 
-        public CourseService(IMapper mapper, IDatabaseSettings databaseSettings)
+        public CourseService(IMapper mapper, IDatabaseSettings databaseSettings,IPublishEndpoint publishEndpoint)
         {
             var client = new MongoClient(databaseSettings.ConnectionString);
+            _publishEndpoint = publishEndpoint;
 
             var database = client.GetDatabase(databaseSettings.DatabaseName);
 
@@ -96,7 +100,8 @@ namespace Catalog.API.Services
             {
                 return ResponseViewModel<NoContent>.Fail("Course not found", 404);
             }
-
+            await _publishEndpoint.Publish<CourseNameChangedEvent>
+                (new CourseNameChangedEvent { CourseId = courseUpdateDto.Id,UpdatedName=courseUpdateDto.Name });
             return ResponseViewModel<NoContent>.Success(204);
         }
 

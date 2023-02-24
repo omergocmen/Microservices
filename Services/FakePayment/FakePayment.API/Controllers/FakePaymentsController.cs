@@ -1,8 +1,10 @@
 ﻿using FakePayment.API.Models;
+using MassTransit;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Shared.ControllerBases;
 using Shared.Dtos;
+using Shared.Messages;
 
 namespace FakePayment.API.Controllers
 {
@@ -11,18 +13,18 @@ namespace FakePayment.API.Controllers
     [ApiController]
     public class FakePaymentsController : CustomBaseController
     {
-        /*private readonly ISendEndpointProvider _sendEndpointProvider;
+        private readonly ISendEndpointProvider _sendEndpointProvider;
 
         public FakePaymentsController(ISendEndpointProvider sendEndpointProvider)
         {
             _sendEndpointProvider = sendEndpointProvider;
-        }*/
+        }
 
-        [HttpPost]
+        [HttpPost("receivepayment")]
         public async Task<IActionResult> ReceivePayment(PaymentDto paymentDto)
         {
             //paymentDto ile ödeme işlemi gerçekleştir.
-            /*var sendEndpoint = await _sendEndpointProvider.GetSendEndpoint(new Uri("queue:create-order-service"));
+            var sendEndpoint = await _sendEndpointProvider.GetSendEndpoint(new Uri("queue:create-order-service"));
 
             var createOrderMessageCommand = new CreateOrderMessageCommand();
 
@@ -44,7 +46,7 @@ namespace FakePayment.API.Controllers
                 });
             });
 
-            await sendEndpoint.Send<CreateOrderMessageCommand>(createOrderMessageCommand);*/
+            await sendEndpoint.Send<CreateOrderMessageCommand>(createOrderMessageCommand);
 
             return CreateActionResultInstance(Shared.Dtos.ResponseViewModel<NoContent>.Success(200));
         }
