@@ -23,8 +23,8 @@ export default function Navbar() {
                   </a>
                 </li>
                 <li>
-                  <a className="inline-block no-underline hover:text-black hover:underline py-2 px-4" href="/store">
-                    Ürünler
+                  <a className="inline-block no-underline hover:text-black hover:underline py-2 px-4" href="/home/courses">
+                    Eğitim İçerikleri
                   </a>
                 </li>
                 <li>
@@ -41,7 +41,7 @@ export default function Navbar() {
             </nav>
           </div>
           <div className="text-center">
-            <p className="text-3xl">Micro Store</p>
+            <p className="text-3xl">Solid Learn</p>
           </div>
           <div className="order-2 md:order-3 flex items-center" id="nav-content">
             <a className="inline-block no-underline hover:text-black" href="#">
@@ -57,12 +57,13 @@ export default function Navbar() {
                 <circle cx="17.5" cy="18.5" r="1.5"></circle>
               </svg>
             </a>
-            <div className="mx-10 mb-2">
+            <div className="mx-10">
               <LinkButton href="/login" text="Giriş Yap" />
             </div>
           </div>
         </div>
       </nav>
+      <hr/>
     </div>
   );
 }

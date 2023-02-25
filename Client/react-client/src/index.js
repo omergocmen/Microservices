@@ -1,3 +1,7 @@
+import "primereact/resources/themes/saga-green/theme.css";
+import "primereact/resources/primereact.min.css";
+import "primeicons/primeicons.css";
+import "./assets/css/icon.css"
 import React from "react";
 import ReactDOM from "react-dom/client";
 import store from "./store/store";

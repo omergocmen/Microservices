@@ -1,49 +1,11 @@
 import React from "react";
+import Header from "../../partials/header";
 
 export default function Contact() {
   return (
     <>
       <main>
-        <div
-          className="relative pt-16 pb-32 flex content-center items-center justify-center"
-          style={{
-            minHeight: "75vh",
-          }}
-        >
-          <div
-            className="absolute top-0 w-full h-full bg-center bg-cover"
-            style={{
-              backgroundImage:
-                "url('https://img.freepik.com/free-photo/smiling-diverse-businesswomen-shake-hands-group-meeting-deal-concept_1163-4686.jpg?w=1380&t=st=1671622716~exp=1671623316~hmac=647d47c39ea6eda5d8e7b41c775dad0d85d3bb2b0d89110def49ef54d44a8f69')",
-            }}
-          >
-            <span id="blackOverlay" className="w-full h-full absolute opacity-75 bg-black"></span>
-          </div>
-          <div className="container relative mx-auto">
-            <div className="items-center flex ">
-              <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
-                <div className="pr-12">
-                  <h1 className="text-white font-semibold text-5xl">Aradığın Her Şeyi Bulabilirsin Hadi Alışverişe Başla.</h1>
-                  <p className="mt-4 text-lg text-gray-300">En kaliteli ürünleri en uygun fiyatlarda bulabilirsin.</p>
-                  <p className="mt-4 text-lg text-gray-300">Haydi sen de sana uygun olabilecek Ürünleri filtrele, bul ve hemen satın al.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden" style={{ height: "70px" }}>
-            <svg
-              className="absolute bottom-0 overflow-hidden"
-              xmlns="http://www.w3.org/2000/svg"
-              preserveAspectRatio="none"
-              version="1.1"
-              viewBox="0 0 2560 100"
-              x="0"
-              y="0"
-            >
-              <polygon className="text-gray-300 fill-current" points="2560 0 2560 100 0 100"></polygon>
-            </svg>
-          </div>
-        </div>
+        <Header/>
         <section className="pb-20 relative block bg-gray-900">
           <div className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20" style={{ height: "80px" }}>
             <svg
