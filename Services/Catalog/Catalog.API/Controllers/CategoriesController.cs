@@ -18,7 +18,7 @@ namespace Catalog.API.Controllers
             _categoryService = categoryService;
         }
 
-        [HttpGet]
+        [HttpGet("getall")]
         public async Task<IActionResult> GetAll()
         {
             var categories = await _categoryService.GetAllAsync();
@@ -27,7 +27,7 @@ namespace Catalog.API.Controllers
         }
 
         //categories/5
-        [HttpGet("{id}")]
+        [HttpGet("getbyid")]
         public async Task<IActionResult> GetById(string id)
         {
             var category = await _categoryService.GetByIdAsync(id);
@@ -35,7 +35,7 @@ namespace Catalog.API.Controllers
             return CreateActionResultInstance(category);
         }
 
-        [HttpPost]
+        [HttpPost("save")]
         public async Task<IActionResult> Create(CategoryDto categoryDto)
         {
             var response = await _categoryService.AddAsync(categoryDto);

@@ -7,7 +7,6 @@ import LabelFor from "../../shared/form/labelFor";
 import { useDispatch } from 'react-redux';
 import { login } from '../../store/authSlice';
 import BaseButton from '../../shared/components/baseButton';
-import BaseButtonHover from '../../shared/components/baseButtonHover';
 
 
 export default function Login() {

@@ -17,7 +17,7 @@ namespace Catalog.API.Controllers
             _courseService = courseService;
         }
 
-        [HttpGet]
+        [HttpGet("getall")]
         public async Task<IActionResult> GetAll()
         {
             var response = await _courseService.GetAllAsync();
@@ -26,7 +26,7 @@ namespace Catalog.API.Controllers
         }
 
         //courses/5
-        [HttpGet("{id}")]
+        [HttpGet("getbyid")]
         public async Task<IActionResult> GetById(string id)
         {
             var response = await _courseService.GetByIdAsync(id);
@@ -34,8 +34,7 @@ namespace Catalog.API.Controllers
             return CreateActionResultInstance(response);
         }
 
-        [HttpGet]
-        [Route("/api/[controller]/GetAllByUserId/{userId}")]
+        [HttpGet("getallbyuserid")]
         public async Task<IActionResult> GetAllByUserId(string userId)
         {
             var response = await _courseService.GetAllByUserIdAsync(userId);
@@ -43,7 +42,7 @@ namespace Catalog.API.Controllers
             return CreateActionResultInstance(response);
         }
 
-        [HttpPost]
+        [HttpPost("save")]
         public async Task<IActionResult> Create(CourseCreateDto courseCreateDto)
         {
             var response = await _courseService.AddAsync(courseCreateDto);
@@ -51,7 +50,7 @@ namespace Catalog.API.Controllers
             return CreateActionResultInstance(response);
         }
 
-        [HttpPut]
+        [HttpPost("update")]
         public async Task<IActionResult> Update(CourseUpdateDto courseUpdateDto)
         {
             var response = await _courseService.UpdateAsync(courseUpdateDto);
@@ -59,7 +58,7 @@ namespace Catalog.API.Controllers
             return CreateActionResultInstance(response);
         }
 
-        [HttpDelete("{id}")]
+        [HttpGet("delete")]
         public async Task<IActionResult> Delete(string id)
         {
             var response = await _courseService.DeleteAsync(id);

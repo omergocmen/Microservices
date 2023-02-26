@@ -5,6 +5,7 @@ import Navbar from "../partials/navbar";
 import Contact from "../pages/home/contact";
 import AboutUs from "../pages/home/aboutUs";
 import Courses from "../pages/course/courses";
+import CreateCourse from "../pages/course/create";
 
 
 export default function HomeContainer() {
@@ -17,6 +18,7 @@ export default function HomeContainer() {
           <Route exact path="/contact" element={<Contact />} />
           <Route exact path="/aboutus" element={<AboutUs />} />
           <Route exact path="/courses" element={<Courses />} />
+          <Route exact path="/courses/create" element={<CreateCourse />} />
         </Routes>
       </div>
     </>

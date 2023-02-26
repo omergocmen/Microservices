@@ -1,12 +1,12 @@
 import axios from "axios";
 
 const baseAxiosInterceptors = axios.create({
-    baseURL: "http://localhost:5000/services"
+    baseURL: "https://localhost:5000/"
 });
 
 baseAxiosInterceptors.interceptors.request.use(
     response => {
-        const token = localStorage.getItem("baseToken");
+        const token = localStorage.getItem("userToken");
         response.headers = { "Authorization": `Bearer ${token}` };
         return response;
     },

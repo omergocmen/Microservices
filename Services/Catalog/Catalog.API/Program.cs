@@ -4,11 +4,11 @@ using MassTransit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
-
 
 builder.Services.AddMassTransit(options =>
 {
@@ -28,6 +28,8 @@ builder.Services.AddControllers(options =>
 {
     options.Filters.Add(new AuthorizeFilter());
 });
+
+builder.Services.AddCors();
 
 builder.Services.AddScoped<ICategoryService,CategoryService>();
 builder.Services.AddScoped<ICourseService, CourseService>();
@@ -61,7 +63,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+var allowedHosts = builder.Configuration.GetValue<string>("AllowedHosts");
+app.UseCors(builder => builder.WithOrigins(allowedHosts).AllowAnyHeader());
 
 app.UseAuthorization();
 app.UseAuthentication();
