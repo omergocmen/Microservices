@@ -1,11 +1,15 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import auth from './authSlice'
 import course from './courseSlice'
+import category from './categorySlice'
+import photo from './photoSlice'
 
 
 const combinedReducers = combineReducers({
     auth,
-    course
+    course,
+    photo,
+    category
 });
 
 const store = configureStore({

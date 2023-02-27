@@ -1,11 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
 import { toast } from "react-toastify";
 import baseAxios from "../helpers/baseAxios";
 
-export const getAllCourses = createAsyncThunk("catalog/courses/getall", async () => {
+export const getAllCategories = createAsyncThunk("catalog/categories/getall", async () => {
   return baseAxios
-    .get("catalog/courses/getall")
+    .get("catalog/categories/getall")
     .then((response) => {
       return response.data;
     })
@@ -14,9 +13,9 @@ export const getAllCourses = createAsyncThunk("catalog/courses/getall", async ()
     });
 });
 
-export const addCourse = createAsyncThunk("catalog/courses/save", async (data) => {
+export const addCategory = createAsyncThunk("catalog/categories/save", async (data) => {
   return baseAxios
-    .post("catalog/courses/save",data)
+    .post("catalog/categories/save",data)
     .then((response) => {
       toast.success("Başarıyla Eklendi");
       return response.data;
@@ -27,18 +26,18 @@ export const addCourse = createAsyncThunk("catalog/courses/save", async (data) =
 });
 
 
-const courseSlice = createSlice({
-  name: "course",
+const categorySlice = createSlice({
+  name: "category",
   initialState: {
-    courses: [],
+    categories: [],
   },
   extraReducers: {
-    [getAllCourses.fulfilled]: (state, action) => {
+    [getAllCategories.fulfilled]: (state, action) => {
       if (action.payload) {
-        state.courses = action.payload.data;
+        state.categories = action.payload.data;
       }
     },
   },
 });
 
-export default courseSlice.reducer;
+export default categorySlice.reducer;

@@ -9,7 +9,7 @@
           "Port": 5011
         }
       ],
-      "UpstreamPathTemplate": "/services/{everything}",
+      "UpstreamPathTemplate": "/services/catalog/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
       "UpstreamScheme": "http",
       "AuthenticationOptions": {
@@ -18,7 +18,7 @@
       }
     },
     {
-      "DownstreamPathTemplate": "/api/photostocks/{everything}",
+      "DownstreamPathTemplate": "/api/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {

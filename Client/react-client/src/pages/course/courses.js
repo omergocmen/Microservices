@@ -23,13 +23,13 @@ export default function BasicDemo() {
         <div className="flex flex-column xl:flex-row xl:align-items-start p-4 gap-4">
           <img
               className="w-9  max-w-[240px] shadow-2 border-round"
-              src={`${course.pictureUrl}`}
+              src={"http://localhost:5012/photos/"+`${course.pictureUrl}`}
               alt={course.name}
             />
           <div className="flex flex-column sm:flex-row justify-content-between align-items-center xl:align-items-start flex-1 gap-4">
             <div className="flex flex-column align-items-center sm:align-items-start gap-3">
               <div className="text-2xl font-bold text-900">{course.name}</div>
-              <div className="text-md text-900">{course.description}</div>
+              <div className="text-md text-900">{course.description.substring(0, 120)+"..."}</div>
               <Rating value={course.rating?course.rating:3} readOnly cancel={false}></Rating>
               <div className="flex align-items-center gap-3">
                 <span className="flex align-items-center gap-2">
@@ -58,14 +58,14 @@ export default function BasicDemo() {
               <span className="font-semibold">{course.category}</span>
             </div>
           </div>
-          <div className="flex flex-column h-[280px] align-items-center gap-3 py-5">
+          <div className="flex flex-column h-[300px] align-items-center gap-3 py-5">
             <div><p className="text-2xl font-bold">{course.name}</p></div>
             <img
-              className="w-9 max-w-[200px] shadow-2 border-round"
-              src={`${course.pictureUrl}`}
+              className="w-9 max-w-[250px] shadow-2 border-round"
+              src={"http://localhost:5012/photos/"+`${course.pictureUrl}`}
               alt={course.name}
             />
-            <div className="text-md">{course.description}</div>
+            <div className="text-md">{course.description.substring(0, 120)+"..."}</div>
             <Rating value={course.rating?course.rating:3} readOnly cancel={false}></Rating>
           </div>
           <div className="flex align-items-center justify-content-between">
