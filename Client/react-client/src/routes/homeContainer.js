@@ -6,7 +6,7 @@ import Contact from "../pages/home/contact";
 import AboutUs from "../pages/home/aboutUs";
 import Courses from "../pages/course/courses";
 import CreateCourse from "../pages/course/create";
-
+import CartDetail from "../pages/cart/cartDetail";
 
 export default function HomeContainer() {
   return (
@@ -19,6 +19,7 @@ export default function HomeContainer() {
           <Route exact path="/aboutus" element={<AboutUs />} />
           <Route exact path="/courses" element={<Courses />} />
           <Route exact path="/courses/create" element={<CreateCourse />} />
+          <Route exact path="/cart" element={<CartDetail />} />
         </Routes>
       </div>
     </>
