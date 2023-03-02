@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import BaseButton from "../../shared/components/baseButton";
 
 export default function CartDetails() {
+
   return (
     <>
       <div className="m-20 border shadow">
@@ -9,7 +10,7 @@ export default function CartDetails() {
           <div className="w-full z-10 right-0 h-full overflow-x-hidden transform translate-x-0 transition duration-700" id="checkout">
             <div className="flex md:flex-row flex-col justify-end" id="cart">
               <div
-                className="lg:w-1/2 w-full md:pl-10 pl-4 pr-10 md:pr-4 md:py-12 py-8 bg-white overflow-y-auto overflow-x-hidden h-screen"
+                className="relative lg:w-1/2 w-full md:pl-10 pl-4 pr-10 md:pr-4 md:py-12 py-8 bg-white overflow-y-auto overflow-x-hidden h-screen"
                 id="scroll"
               >
                 <h1 className="text-4xl font-black leading-10 text-gray-800 pt-3">Alışverin Sepetin</h1>
@@ -29,6 +30,7 @@ export default function CartDetails() {
                     <p className="leading-3 text-gray-600 py-4">Color: Black</p>
                   </div>
                 </div>
+                <BaseButton className="absolute bottom-0" text="Sepeti Temizle"/>
               </div>
               <div className="xl:w-1/2 md:w-1/3 xl:w-1/4 w-full bg-gray-100 h-full">
                 <div className="flex flex-col md:h-screen px-14 py-20 justify-between overflow-y-auto">

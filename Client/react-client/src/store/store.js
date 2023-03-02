@@ -3,13 +3,15 @@ import auth from './authSlice'
 import course from './courseSlice'
 import category from './categorySlice'
 import photo from './photoSlice'
+import basket from './basketSlice'
 
 
 const combinedReducers = combineReducers({
     auth,
     course,
     photo,
-    category
+    category,
+    basket
 });
 
 const store = configureStore({

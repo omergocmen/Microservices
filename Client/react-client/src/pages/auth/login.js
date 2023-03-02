@@ -4,12 +4,15 @@ import { useForm } from "react-hook-form";
 import TextboxFor from '../../shared/form/textboxFor';
 import ValidationFor from "../../shared/form/validationFor";
 import LabelFor from "../../shared/form/labelFor";
-import { useDispatch } from 'react-redux';
 import { login } from '../../store/authSlice';
 import BaseButton from '../../shared/components/baseButton';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function Login() {
+
+    const navigate = useNavigate();
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = (data) => {
@@ -23,8 +26,11 @@ export default function Login() {
             }
         )
         login(body).then(response => {
-            console.log(response);
+            toast.success("Giriş Başarılı");
+            localStorage.setItem("userToken",response.data.access_token);   
+            navigate("/home")
         }).catch(err => {
+            toast.error("Giriş Yapılamadı İşlem Başarısız");
             console.log(err);
         })
     }

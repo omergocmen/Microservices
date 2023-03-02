@@ -1,10 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Badge } from "primereact/badge";
 import Basebutton from "../../shared/components/baseButton";
 import { Rating } from "primereact/rating";
-
+import { useDispatch, useSelector } from "react-redux";
+import { getBasket } from "../../store/basketSlice";
 export default function Cart() {
   const [dropdownOpen, setdropdownOpen] = useState(false);
+
+  const dispatch = useDispatch();
+  const basket = useSelector((state) => state.basket.basket);
+  useEffect(() => {
+    dispatch(getBasket());
+  }, []);
 
   return (
     <div>
@@ -31,16 +38,16 @@ export default function Cart() {
                     <p className="font-bold text-900">RabbitMQ Masstransit Öğrenme Kursu</p>
                     <div>
                       <div>
-                        <Rating value={4} readOnly cancel={false}/>
+                        <Rating value={4} readOnly cancel={false} />
                         <i className="text-sm underline">Ömer Göçmen</i>
                       </div>
-                        <span className="font-semibold">50$</span>
+                      <span className="font-semibold">50$</span>
                     </div>
                   </div>
                 </div>
               </div>
             </li>
-            <hr/>
+            <hr />
             <li>
               <div className="flex flex-column xl:flex-row xl:align-items-start p-3">
                 <img
@@ -54,37 +61,33 @@ export default function Cart() {
                     <div>
                       Ömer Göçmen
                       <div>
-                        <Rating value={2} readOnly cancel={false}/>
+                        <Rating value={2} readOnly cancel={false} />
                       </div>
-                        <span className="font-semibold">100$</span>
+                      <span className="font-semibold">100$</span>
                     </div>
                   </div>
                 </div>
               </div>
             </li>
-            <hr/>
+            <hr />
             <li>
               <div className="flex flex-column xl:flex-row xl:align-items-start p-3">
-                <img
-                  className="w-9 max-w-[115px] min-h-[115px]"
-                  src={"https://i.ytimg.com/vi/VESPItwumjw/sddefault.jpg"}
-                  alt=".net core kursu"
-                />
+                <img className="w-9 max-w-[115px] min-h-[115px]" src={"https://i.ytimg.com/vi/VESPItwumjw/sddefault.jpg"} alt=".net core kursu" />
                 <div className="text-left ml-4 flex flex-column sm:flex-row justify-content-between align-items-center xl:align-items-start flex-1 gap-4">
                   <div className="flex flex-column align-items-center sm:align-items-start">
                     <p className="font-bold text-900">.Net Core Kursu</p>
                     <div>
                       Ömer Göçmen
                       <div>
-                        <Rating value={3} readOnly cancel={false}/>
+                        <Rating value={3} readOnly cancel={false} />
                       </div>
-                        <span className="font-semibold">125$</span>
+                      <span className="font-semibold">125$</span>
                     </div>
                   </div>
                 </div>
               </div>
             </li>
-            <hr/>
+            <hr />
             <li>
               <div className="justify-between px-10 flex flex-column xl:flex-row xl:align-items-start p-3">
                 <p>Toplam Tutar</p>
@@ -93,7 +96,7 @@ export default function Cart() {
             </li>
             <li>
               <div className="justify-between px-10 flex flex-column xl:flex-row xl:align-items-start">
-              <Basebutton text="Ödemeye Geç"/> 
+                <Basebutton text="Ödemeye Geç" />
               </div>
             </li>
           </ul>
