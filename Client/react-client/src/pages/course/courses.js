@@ -6,11 +6,13 @@ import { DataView, DataViewLayoutOptions } from "primereact/dataview";
 import { Rating } from "primereact/rating";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCourses } from "../../store/courseSlice";
+import { useNavigate } from "react-router-dom";
 
 export default function BasicDemo() {
   const [layout, setLayout] = useState("grid");
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const courses = useSelector(state=>state.course.courses);
 
   useEffect(() => {
@@ -40,7 +42,7 @@ export default function BasicDemo() {
             </div>
             <div className="flex sm:flex-column align-items-center sm:align-items-end gap-3 sm:gap-2">
               <span className="text-2xl font-semibold">${course.price}</span>
-              <Button icon="pi pi-angle-right" className="p-button-rounded"></Button>
+              <Button onClick={()=>navigate(`/home/courses/${course.id}`)} icon="pi pi-angle-right" className="p-button-rounded"/>
             </div>
           </div>
         </div>
@@ -58,7 +60,7 @@ export default function BasicDemo() {
               <span className="font-semibold">{course.category}</span>
             </div>
           </div>
-          <div className="flex flex-column h-[300px] align-items-center gap-3 py-5">
+          <div className="flex flex-column h-[350px] align-items-center gap-3 py-5">
             <div><p className="text-2xl font-bold">{course.name}</p></div>
             <img
               className="w-9 max-w-[250px] shadow-2 border-round"
@@ -70,7 +72,7 @@ export default function BasicDemo() {
           </div>
           <div className="flex align-items-center justify-content-between">
             <span className="text-2xl font-semibold">${course.price}</span>
-            <Button icon="pi pi-angle-right" className="p-button-rounded"></Button>
+            <Button onClick={()=>navigate(`/home/courses/${course.id}`)} icon="pi pi-angle-right" className="p-button-rounded"/>
           </div>
         </div>
       </div>

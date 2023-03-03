@@ -13,10 +13,12 @@ export const getBasket = createAsyncThunk("basket/getbasket", async () => {
     });
 });
 
-export const saveBasket = createAsyncThunk("basket/saveorupdatebasket", async (data) => {
+export const saveBasket = createAsyncThunk("basket/saveorupdatebasket", async (data,thunkAPI) => {
     return privateBaseAxios
       .post("basket/saveorupdatebasket",data)
       .then((response) => {
+        toast.success("Sepet Başarıyla Güncellendi")
+        thunkAPI.dispatch(getBasket())
         return response.data;
       })
       .catch((err) => {
@@ -24,10 +26,12 @@ export const saveBasket = createAsyncThunk("basket/saveorupdatebasket", async (d
       });
   });
 
-  export const deleteBasket = createAsyncThunk("basket/deletebasket", async () => {
+  export const deleteBasket = createAsyncThunk("basket/deletebasket", async (thunkAPI) => {
     return privateBaseAxios
       .get("basket/deletebasket")
       .then((response) => {
+        toast.success("Sepet Başarıyla Temizlendi")
+        thunkAPI.dispatch(getBasket())
         return response.data;
       })
       .catch((err) => {
