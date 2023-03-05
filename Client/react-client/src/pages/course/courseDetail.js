@@ -2,6 +2,7 @@ import { Rating } from "primereact/rating";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import BaseButton from "../../shared/components/baseButton";
 import { getBasket, saveBasket } from "../../store/basketSlice";
 import { getById } from "../../store/courseSlice";
@@ -36,6 +37,12 @@ export default function CourseDetail() {
     const saveBasketClick = () => {
         dispatch(getBasket())
         if(basket){
+            const isExist=basket.basketItems.find(o=>o.courseId==params.id);
+            if(isExist){
+                toast.info("Bu Ürün Zaten Sepete Eklenmiş");
+                return
+            }
+
             const newBasketItem={
                 courseId:params.id,
                 courseName:course.name,
@@ -43,6 +50,7 @@ export default function CourseDetail() {
                 price:course.price,
                 quantity:1
             }
+            
             const newBasket={
                 basketItems:[...basket.basketItems,newBasketItem],
                 discountCode:"",
@@ -61,7 +69,7 @@ export default function CourseDetail() {
                         <img
                             alt="ecommerce"
                             className="h-[300px] min-w-[250px] circle object-center rounded-full mt-12 border border-gray-200"
-                            src={"http://localhost:5012/photos/" + course.pictureUrl}
+                            src={"http://localhost:5012/photos/" + course?.pictureUrl}
                         />
                         <div className="mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-5">
                             <h1 className="text-gray-900 text-xl title-font font-medium">Örnek İçerikler</h1>

@@ -13,6 +13,20 @@ export const getBasket = createAsyncThunk("basket/getbasket", async () => {
     });
 });
 
+
+export const paymentBasket = createAsyncThunk("basket/saveorupdatebasket", async (data,thunkAPI) => {
+  return privateBaseAxios
+    .post("basket/saveorupdatebasket",data)
+    .then((response) => {
+      toast.success("Ödeme İşlemi Başarıyla Gerçekleşti")
+      thunkAPI.dispatch(getBasket())
+      return response.data;
+    })
+    .catch((err) => {
+      toast.error(err.message);
+    });
+});
+
 export const saveBasket = createAsyncThunk("basket/saveorupdatebasket", async (data,thunkAPI) => {
     return privateBaseAxios
       .post("basket/saveorupdatebasket",data)

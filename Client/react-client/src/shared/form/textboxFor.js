@@ -6,7 +6,7 @@ export default function TextboxFor({ type, register, errors, ...props }) {
             {...register}
             id={register.name}
             type={type?type:"text"}
-            className={`border-[1px] border-black rounded-lg py-[10px] px-[10px] placeholder-grey-dark-2 placeholder:text-[14px] outline-none ${props.className} ${errors[register.name] ? `!border-red !text-red !placeholder-red` : ``} ${additionalStyle}`}
+            className={`border-[1px] w-full border-black rounded-lg py-[10px] px-[10px] placeholder-grey-dark-2 placeholder:text-[14px] outline-none ${props.className} ${errors[register.name] ? `!border-red !text-red !placeholder-red` : ``} ${additionalStyle}`}
             autoComplete="off"
         />
     )

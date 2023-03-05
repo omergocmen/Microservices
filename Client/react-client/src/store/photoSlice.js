@@ -3,13 +3,13 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import baseAxios from "../helpers/baseAxios";
 
-export const savePhoto = createAsyncThunk("photostock/photos/photosave", async (data) => {
+export const savePhoto = createAsyncThunk("photos/photosave", async (data) => {
 
   let formData = new FormData();
   formData.append("photo", data);
 
   return baseAxios
-    .post("photostock/photos/photosave",formData,{
+    .post("photos/photosave",formData,{
       headers: {
         "Content-Type": "multipart/form-data",
       }})

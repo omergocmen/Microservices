@@ -25,16 +25,16 @@ export default function Cart() {
                 </i>
             </button>
             {dropdownOpen && (
-                <div className="bg-white text-base absolute z-10 list-none divide-y divide-gray-100 rounded shadow w-[370px] max-w-[370px]">
+                <div className="bg-white text-base absolute z-10 list-none divide-y divide-gray-100 rounded shadow w-[350px] max-w-[370px]">
                     <ul className="py-1 border border-2 rounded">
-                        {basket.basketItems.map((item, index) => {
+                        {basket?.basketItems?.map((item, index) => {
                             return (
                                 <>
-                                    <li>
+                                    <li key={index}>
                                         <div className="flex flex-column xl:flex-row xl:align-items-start p-3">
                                             <img
                                                 className="w-9 max-w-[115px] min-h-[100px]"
-                                                src={"http://localhost:5012/photos/"+`${item.pictureUrl}`}
+                                                src={"http://localhost:5012/photos/" + `${item.pictureUrl}`}
                                                 alt={item.courseName}
                                             />
                                             <div className="text-left ml-4 flex flex-column sm:flex-row justify-content-between align-items-center xl:align-items-start flex-1 gap-4">
@@ -45,7 +45,7 @@ export default function Cart() {
                                                             <Rating value={4} readOnly cancel={false} />
                                                             <i className="text-sm underline">Ömer Göçmen</i>
                                                         </div>
-                                                        <span className="font-semibold">{item.price+"$"}</span>
+                                                        <span className="font-semibold">{item.price + "$"}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -55,17 +55,28 @@ export default function Cart() {
                                 </>
                             );
                         })}
-                        <li>
-                            <div className="justify-between px-10 flex flex-column xl:flex-row xl:align-items-start p-3">
-                                <p>Toplam Tutar</p>
-                                <p>{basket.basketItems.reduce((n, {price}) => n + price, 0)}$</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div className="justify-between px-10 flex flex-column xl:flex-row xl:align-items-start">
-                                <LinkButton href={"cartdetail"} text="Ödemeye Geç" />
-                            </div>
-                        </li>
+                        {basket?.basketItems.length != 0 ? (
+                            <>
+                                <li>
+                                    <div className="justify-between px-10 flex flex-column xl:flex-row xl:align-items-start p-3">
+                                        <p>Toplam Tutar</p>
+                                        <p>{basket?.basketItems?.reduce((n, { price }) => n + price, 0)}$</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div className="justify-between px-10 flex flex-column xl:flex-row xl:align-items-start">
+                                        <LinkButton href={"cartdetail"} text="Ödemeye Geç" />
+                                    </div>
+                                </li>
+                            </>
+                        ) : (
+                            <>
+                                <div className="xl:flex-row xl:align-items-start p-3">
+                                    <p className="mb-4 text-xl">Henüz Ürün Eklenmedi</p>
+                                    <LinkButton href={"/home/courses"} text={"Hemen Başla"}></LinkButton>
+                                </div>
+                            </>
+                        )}
                     </ul>
                 </div>
             )}

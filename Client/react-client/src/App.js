@@ -26,7 +26,7 @@ function App() {
 
 
   return (
-    <div className="App">
+    <div className="App h-full">
       <Routes>
         <Route exact path="/home/*" element={<HomeContainer />} />
         <Route exact path="/*" element={<PublicContainer />} />

@@ -12,18 +12,18 @@ export default function Header({imageUrl}) {
         className="absolute top-0 w-full h-full bg-center bg-cover"
         style={{
           backgroundImage:
-            "url('https://images.pexels.com/photos/3776178/pexels-photo-3776178.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')",
+            "url('https://images.pexels.com/photos/4458554/pexels-photo-4458554.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')",
         }}
       >
-        <span id="blackOverlay" className="w-1/2 h-full absolute opacity-50 bg-black"></span>
+        <span id="blackOverlay" className="w-1/2 h-full absolute opacity-25 bg-black"></span>
       </div>
       <div className="container relative mx-auto">
         <div className="items-center flex ">
           <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
-            <div className="pr-12">
-              <h1 className="text-white font-semibold text-5xl">Aradığın Tüm Eğitim İçeriklerini Burada Bulacaksın Hadi Hemen Eğitime Başla </h1>
-              <p className="mt-4 text-lg text-gray-300">En kaliteli eğitim içeriklerini en uygun fiyatlarda bulabilirsin.</p>
-              <p className="mt-4 text-lg text-gray-300">Haydi sen de sana uygun olabilecek Eğtimleri filtrele, bul ve hemen satın al.</p>
+            <div className="pr-12 text-white">
+              <h1 className="font-semibold text-5xl">Aradığın Tüm Eğitim İçeriklerini Burada Bulacaksın Hadi Hemen Eğitime Başla </h1>
+              <p className="font-semibold mt-4 text-lg">En kaliteli eğitim içeriklerini en uygun fiyatlarda bulabilirsin.</p>
+              <p className="font-semibold mt-4 text-lg">Haydi sen de sana uygun olabilecek Eğtimleri filtrele, bul ve hemen satın al.</p>
             </div>
           </div>
         </div>
